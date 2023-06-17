@@ -29,17 +29,16 @@ select c.name AS Category, AVG(f.length) AS AVG_Duration
 from sakila.category c 
 join sakila.film_category fc on c.category_id = fc.category_id
 join sakila.film f on f.film_id = fc.film_id
-GROUP BY Category
-ORDER BY AVG_Duration;
+GROUP BY Category;
 
 -- 4. Which film categories are longest?
 
-select c.name AS Category, AVG(f.length) AS AVG_Duration
+select c.name AS Category, COUNT(f.film_id) AS Films
 from sakila.category c 
 join sakila.film_category fc on c.category_id = fc.category_id
 join sakila.film f on f.film_id = fc.film_id
 GROUP BY Category
-ORDER BY AVG_Duration;
+ORDER BY Films DESC;
 
 -- 5. Display the most frequently rented movies in descending order.
 
